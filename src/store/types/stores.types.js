@@ -1,0 +1,5 @@
+export const storesTypes = {
+  SELECT_STORE: "SELECT_STORE",
+  FILTER_STORES: "FILTER_STORES",
+  ADD_STORE: "ADD_STORE",
+};

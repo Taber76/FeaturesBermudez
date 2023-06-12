@@ -3,32 +3,36 @@ import { FlatList, View, TouchableOpacity, Text } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
 import { styles } from "./styles";
-import { CategoryItem, Head } from "../../components/index";
+import { Head, SearchBar, ButtonIcon, StoreList } from "../../components/index";
 import { selectCategory } from "../../store/actions";
 
 const Search = ({ navigation }) => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.data);
 
-  const onSelected = (item) => {
-    dispatch(selectCategory(item.id));
-    navigation.navigate("Products", {
-      categoryName: item.name,
-      categoryColor: item.color,
-    });
-  };
-
-  const renderItem = ({ item }) => {
-    return <CategoryItem item={item} onSelected={onSelected} />;
-  };
-  const keyExtractor = (item) => item.id.toString();
-
   return (
-    <View>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Head />
-      </TouchableOpacity>
-      <FlatList data={categories} renderItem={renderItem} keyExtractor={keyExtractor} />
+    <View style={styles.container}>
+      <Head />
+      <View style={styles.contentContainer}>
+        <SearchBar />
+        <View style={styles.buttonsContainer}>
+          <ButtonIcon
+            icon={require("../../../assets/images/iconofiltro.png")}
+            text="Filtrar"
+            width={130}
+            height={50}
+            onPress={() => console.log("Filtrar")}
+          />
+          <ButtonIcon
+            icon={require("../../../assets/images/iconoordenar.png")}
+            text="Ordenar"
+            width={130}
+            height={50}
+            onPress={() => console.log("Ordenar")}
+          />
+        </View>
+        <StoreList />
+      </View>
     </View>
   );
 };

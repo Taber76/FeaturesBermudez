@@ -6,7 +6,7 @@ import { Picker } from "@react-native-picker/picker";
 
 import { styles } from "./styles";
 import { ImageSelector, Head } from "../../components";
-import { addProduct } from "../../store/actions";
+import { addStore } from "../../store/actions";
 
 const NewStore = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -16,7 +16,7 @@ const NewStore = ({ navigation }) => {
   const [photoUri, setPhotoUri] = useState(null);
 
   const dispatch = useDispatch();
-  const productsData = useSelector((state) => state.products.data);
+  const storesData = useSelector((state) => state.stores.data);
 
   const handlePickerChange = (value) => {
     switch (value) {
@@ -45,7 +45,7 @@ const NewStore = ({ navigation }) => {
 
   const handleSave = () => {
     dispatch(
-      addProduct({
+      addStore({
         name: name,
         categorie: category,
         description: description,

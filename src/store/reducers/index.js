@@ -1,3 +1,2 @@
 export { default as categoriesReducer } from "./categories.reducer";
-export { default as productsReducer } from "./products.reducer";
-export { default as itemsReducer } from "./items.reducer";
+export { default as storesReducer } from "./stores.reducer";
